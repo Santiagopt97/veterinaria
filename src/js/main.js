@@ -1,13 +1,16 @@
-let fechaActual = new Date()
-const mascotas = [
+let fechaActual = new Date() //declaro la variable fechaActual para usarla mas adelante y calcular las edades de las mascotas
+
+// creo el array de objetos de mascotas con 10 objetos distintos como lo dice el ejercicio
+let mascotas = [
     {
         nombre: "fido",
         especie: "perro",
         raza: "labrador",
-        fechaNacimiento: new Date("2018-05-15"),
+        fechaNacimiento: new Date("2018-05-15"), //utilizo el new Date() para que quede en formato fecha 
         edad: 6,
         peso: 15,
         estado: "estable",
+        // Como los dueños tienen sus propios atributos lo utilice como un objeto dentro de otro objeto
         dueño: {
             nombreDueño: "juan",
             documento: "1234567890",
@@ -113,14 +116,14 @@ const mascotas = [
     },
     {
         nombre: "pistacho",
-        especie: "frenchie",
-        raza: "labrador",
+        especie: "perro",
+        raza: "frenchie",
         fechaNacimiento: "2016-11-12",
         edad: 8,
         peso: 25,
         estado: "estable",
         dueño: {
-            nombreDueño: "luisa",
+            nombreDueño: "violeta",
             documento: "3456789012",
             telefonoContacto: "555-345-6789",
             correo: "luisam@example.com",
@@ -162,29 +165,45 @@ const mascotas = [
 ]
 
 //1. registrar una nueva mascota
+
+//creo la funcion agregar mascota
 function agregarMascota() {
+    //declaro el objeto nueva mascota al cual le ingresaremos los key con su value para despues hacerle push al array original
     const nuevaMascota = {
 
     }
+
+    // pido la fecha de nacimiento para poder calcular la edad de las mascotas
     let fechaNacimiento = new Date(prompt("Ingrese la fecha de nacimiento de la mascota"))
+
+    //aca agrego los key y value al objeto nueva mascota
     nuevaMascota.nombre = prompt("Ingrese el nombre de la mascota")
     nuevaMascota.especie = prompt("Ingrese la especie de la mascota")
     nuevaMascota.raza = prompt("Ingrese la raza de la mascota")
     nuevaMascota.fechaNacimiento = fechaNacimiento
-    nuevaMascota.edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear()
-    nuevaMascota.peso = Number(prompt("Ingrese el peso de la mascota"))
+
+    //para calcular la edad de la mascota utilizo la funcion getFullYear
+    nuevaMascota.edad = (fechaActual - fechaNacimiento)/(1000*3600*24*360);
+    nuevaMascota.peso = parseInt(prompt("Ingrese el peso de la mascota"))
     nuevaMascota.estado = prompt("Ingrese el estado de la mascota")
     nuevaMascota.dueño = {}
+
+    //aca agrego el objeto dueño con sus key y value dentro del objeto nuevaMascota
     nuevaMascota.dueño.nombreDueño = prompt("Ingrese el nombre del propietario de la mascota")
     nuevaMascota.dueño.documento = prompt("Ingrese el documento del dueño de la mascota")
     nuevaMascota.dueño.telefonoContacto = Number(prompt("Ingrese el telefono de contacto del dueño de la mascota"))
     nuevaMascota.dueño.correo = prompt("Ingrese el correo del dueño de la mascota")
+
+    //con el push le envio la informacion que esta en nuevaMascota al array mascotas
     mascotas.push(nuevaMascota)
+
+    //aca muestro la informacion de la mascota que se agrego
     console.info(nuevaMascota)
     console.info("Mascota agregada con exito")
 }
 
 //2. Listar mascotas
+//aca utilizo un for para recorrer el array mascotas y mostrar la informacion de cada mascota
 function listar() {
     for (let i = 0; i < mascotas.length; i++) {
         console.info(mascotas[i])
@@ -192,7 +211,7 @@ function listar() {
 }
 
 //3. Ver dueños
-
+// aca utilizo un for para recorrer el array mascotas y mostrar la informacion de cada dueño
 function verDueños() {
     for (let i = 0; i < mascotas.length; i++) {
         console.info(mascotas[i].dueño)
@@ -229,8 +248,10 @@ function mascotasMismoDueño() {
 
 function actualizaInfo() {
     let mascota = prompt("ingresa el nombre de la mascota que deseas actualizar:")
+    let mascotaEncontrada = false
     for (let i = 0; i < mascotas.length; i++){
-        if (mascotas[i].nombre == mascota) {
+        if (mascotas[i].nombre === mascota) {
+            mascotaEncontrada = true
             console.info(`Que infromacion deseas cambiar de la mascota? elije del 1 al 11:
             1. nombre
             2. especie
@@ -298,10 +319,12 @@ function actualizaInfo() {
                     console.info("Ingresa una opcion valida")
                     break;
             }
-        }else{
-            console.info("la mascota no existe")
         }
     
+    }
+    if (!mascotaEncontrada) {
+        console.info("la mascota no existe, intenta con otra")
+        actualizaInfo()
     }
 }
 
@@ -316,13 +339,13 @@ function eliminarMascota() {
             console.info("Mascota eliminada")
         }
     }
-    
+
 }
 
 //8. crear un menu que permita controlar cada una de las acciones
 function menu() {
     let menu = true
-    while (menu == true) {
+    while (menu) {
         console.info(`Menu de opciones:
         1. Agregar nueva mascota
         2. Listar mascotas
@@ -369,3 +392,11 @@ function menu() {
 }
 menu()
 
+
+// let confirmacion = confirm(`¿Está seguro que desea eliminar a ${mascotaBuscar}?`)
+//     if (confirmacion) {
+//         mascotas = mascotas.filter(mascota => {
+//             return mascota.nombre !== mascotaBuscar
+//         })
+//         console.error(`La mascota ${mascotaBuscar} ha sido eliminada satisfactoriamente`)
+//     }
