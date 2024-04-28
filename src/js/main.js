@@ -221,11 +221,13 @@ function verDueños() {
 
 //4. Buscar mascota por nombre
 
-
+// aca utilizo un for para recorrer el array mascotas y mostrar la informacion de una mascota
 function buscarMascota(){
+
+//declaro la variable mascota para comparar la mascota ingresada con las mascotas del array
     let mascota = prompt("ingresa el nombre de la mascota que deseas buscar:")
-    for (let i = 0; i < mascotas.length; i++) {
-        if (mascotas[i].nombre == mascota) {
+    for (let i = 0; i < mascotas.length; i++) { 
+        if (mascotas[i].nombre == mascota) { //si la mascota ingresada es igual al valor de nombre de la mascota del array, se muestra la informacion de la mascota
             console.info(mascotas[i])
         }        
     }
@@ -233,10 +235,13 @@ function buscarMascota(){
 
 //5. Mostrar mascotas que pertenezcan al mismo dueño
 
+// aca utilizo un for para recorrer el array mascotas y mostrar las mascotas que pertenezcan al mismo dueño
 function mascotasMismoDueño() {
+
+    //declaro la variable dueño para comparar el nombre del dueño ingresado con el nombre del dueño de las mascotas del array
     let dueño = prompt("ingresa el nombre del dueño de las mascotas que deseas ver:")
     for (let i = 0; i < mascotas.length; i++) {
-        if(mascotas[i].dueño.nombreDueño === dueño){
+        if(mascotas[i].dueño.nombreDueño === dueño){ // si el nombre del dueño ingresado es igual al valor de nombre del dueño de la mascota del array, se muestra el nombre de la mascota
             console.info(mascotas[i].nombre)
         }
         
@@ -247,11 +252,19 @@ function mascotasMismoDueño() {
 //6. Actualizar informacion de mascota existente
 
 function actualizaInfo() {
+    
+    // pido el nombre de la mascota a actualizar para buscarla en mi array
     let mascota = prompt("ingresa el nombre de la mascota que deseas actualizar:")
+
+    //inicializo mascotaEncontrada en falso para que en el momento que se vuelva verdadero significa que la mascota fue encontrada
     let mascotaEncontrada = false
+
+    // recorro el array mascotas y si el nombre de la mascota ingresada es igual al nombre de la mascota del array, se actualiza la informacion de la mascota
     for (let i = 0; i < mascotas.length; i++){
         if (mascotas[i].nombre === mascota) {
             mascotaEncontrada = true
+
+    // se le pide al usuario que ingrese la informacion que desea actualizar
             console.info(`Que infromacion deseas cambiar de la mascota? elije del 1 al 11:
             1. nombre
             2. especie
@@ -266,6 +279,8 @@ function actualizaInfo() {
             11. correo
             0. volver al menu principal`)
             let eleccion = prompt("Elije una opcion")
+        
+    // se le pide al usuario que ingrese la nueva informacion y se actualiza la informacion de la mascota en base a la elecion del usuario
             switch (eleccion) {
                 case "1":
                     mascotas[i].nombre = prompt("ingresa el nuevo nombre de la mascota:")
@@ -322,6 +337,7 @@ function actualizaInfo() {
         }
     
     }
+    // si no se encuentra la mascota se vuelve a llamar a la funcion para que ingrese nuevamente el nombre de la mascota correcta
     if (!mascotaEncontrada) {
         console.info("la mascota no existe, intenta con otra")
         actualizaInfo()
@@ -331,19 +347,36 @@ function actualizaInfo() {
 //7. Eliminar una mascota
 
 function eliminarMascota() {
+    // se crea una variable que almacena el nombre de la mascota que se desea eliminar
     let mascota = prompt("ingresa el nombre de la mascota que deseas eliminar:")
+
+    // inicializo la variable mascotaEncontrada en falso, si mascotaEncontrada cambia a true es porque la mascota se encuentra en el array
+    let mascotaEncontrada = false
     for (let i = 0; i < mascotas.length; i++){
         if (mascotas[i].nombre == mascota) {
-            console.info(mascotas[i])
-            mascotas.splice(i, 1)
-            console.info("Mascota eliminada")
+            mascotaEncontrada = true 
+
+    // se crea una variable que almacena la confirmacion de si se desea eliminar la mascota para no eliminar por error
+            let confirmacion = confirm(`¿Está seguro que desea eliminar a ${mascota}?`)
+            if (confirmacion) {
+                mascotas.splice(i, 1)  // con el splice le pasamos la posicion donde se encuentra la mascota y eliminamos 1 atributo
+                console.info("Mascota eliminada correctamente")
+            }
         }
+    }
+
+    // si la mascota no se encuentra en el array, se le informa al usuario
+    if (!mascotaEncontrada) {
+        console.info("la mascota no existe, intenta con otra")
+        eliminarMascota()
     }
 
 }
 
+
 //8. crear un menu que permita controlar cada una de las acciones
 function menu() {
+    // se crea un ciclo while que permite que el menu se repita hasta que el usuario ingrese 0 ó hasta que menu se vuelva flase
     let menu = true
     while (menu) {
         console.info(`Menu de opciones:
@@ -357,6 +390,7 @@ function menu() {
         0. salir`)
         let opcion = Number(prompt("Ingrese una opcion"))
     
+        // se crea un switch que permite ejecutar las funciones segun la opcion que ingrese el usuario
         switch (opcion) {
             case 1:
                 agregarMascota()
@@ -390,13 +424,8 @@ function menu() {
         }
     }  
 }
+
+// se ejecuta la funcion menu() para ejecutar todo el programa
 menu()
 
 
-// let confirmacion = confirm(`¿Está seguro que desea eliminar a ${mascotaBuscar}?`)
-//     if (confirmacion) {
-//         mascotas = mascotas.filter(mascota => {
-//             return mascota.nombre !== mascotaBuscar
-//         })
-//         console.error(`La mascota ${mascotaBuscar} ha sido eliminada satisfactoriamente`)
-//     }
