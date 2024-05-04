@@ -1,168 +1,7 @@
 let fechaActual = new Date() //declaro la variable fechaActual para usarla mas adelante y calcular las edades de las mascotas
 
 // creo el array de objetos de mascotas con 10 objetos distintos como lo dice el ejercicio
-let mascotas = [
-    {
-        nombre: "fido",
-        especie: "perro",
-        raza: "labrador",
-        fechaNacimiento: new Date("2018-05-15"), //utilizo el new Date() para que quede en formato fecha 
-        edad: 6,
-        peso: 15,
-        estado: "estable",
-        // Como los dueños tienen sus propios atributos lo utilice como un objeto dentro de otro objeto
-        dueño: {
-            nombreDueño: "juan",
-            documento: "1234567890",
-            telefonoContacto: "555-123-4567",
-            correo: "juanperez@example.com",
-        }
-    },
-    {
-        nombre: "luna",
-        especie: "gato",
-        raza: "siamés",
-        fechaNacimiento: "2019-03-10",
-        edad: 5,
-        peso: 5,
-        estado: "estable",
-        dueño: {
-            nombreDueño: "maría",
-            documento: "0987654321",
-            telefonoContacto: "555-987-6543",
-            correo: "mariag@example.com",
-        }
 
-    },
-    {
-        nombre: "rocky",
-        especie: "perro",
-        raza: "bulldog",
-        fechaNacimiento: "2017-08-25",
-        edad: 7,
-        peso: 20,
-        estado: "estable",
-        dueño: {
-            nombreDueño: "carlos",
-            documento: "5678901234",
-            telefonoContacto: "555-567-8901",
-            correo: "carlosm@example.com",
-        }
-        
-    },
-    {
-        nombre: "max",
-        especie: "perro",
-        raza: "golden Retriever",
-        fechaNacimiento: "2018-07-20",
-        edad: 6,
-        peso: 30,
-        estado: "estable",
-        dueño: {
-            nombreDueño: "pedro",
-            documento: "5678901234",
-            telefonoContacto: "555-123-4567",
-            correo: "pedror@example.com",
-        }
-        
-    },
-    {
-        nombre: "milo",
-        especie: "perro",
-        raza: "chihuahua",
-        fechaNacimiento: "2020-02-15",
-        edad: 4,
-        peso: 3,
-        estado: "estable",
-        dueño: {
-            nombreDueño: "ana",
-            documento: "1234567890",
-            telefonoContacto: "555-678-9012",
-            correo: "anal@example.com",
-        }
-        
-    },
-    {
-        nombre: "zeuz",
-        especie: "perro",
-        raza: "dalmata",
-        fechaNacimiento: "2023-04-20",
-        edad: 1,
-        peso: 28,
-        estado: "estable",
-        dueño: {
-            nombreDueño: "david",
-            documento: "6789012345",
-            telefonoContacto: "555-789-0123",
-            correo: "david@example.com",
-        }
-        
-    },
-    {
-        nombre: "simba",
-        especie: "gato",
-        raza: "persa",
-        fechaNacimiento: "2017-05-01",
-        edad: 7,
-        peso: 10,
-        estado: "estable",
-        dueño: {
-            nombreDueño: "laura",
-            documento: "9012345678",
-            telefonoContacto: "555-234-5678",
-            correo: "lauraf@example.com",
-        }
-        
-    },
-    {
-        nombre: "pistacho",
-        especie: "perro",
-        raza: "frenchie",
-        fechaNacimiento: "2016-11-12",
-        edad: 8,
-        peso: 25,
-        estado: "estable",
-        dueño: {
-            nombreDueño: "violeta",
-            documento: "3456789012",
-            telefonoContacto: "555-345-6789",
-            correo: "luisam@example.com",
-        }
-        
-    },
-    {
-        nombre: "nina",
-        especie: "gato",
-        raza: "maine coon",
-        fechaNacimiento: "2019-09-30",
-        edad: 5,
-        peso: 8,
-        estado: "estable",
-        dueño: {
-            nombreDueño: "david",
-            documento: "6789012345",
-            telefonoContacto: "555-789-0123",
-            correo: "david@example.com",
-        }
-        
-    },
-    {
-        nombre: "mia",
-        especie: "gato",
-        raza: "abisinio",
-        fechaNacimiento: "2017-06-20",
-        edad: 7,
-        peso: 12,
-        estado: "critico",
-        dueño: {
-            nombreDueño: "david",
-            documento: "6789012345",
-            telefonoContacto: "555-789-0123",
-            correo: "david@example.com",
-        }
-        
-    }
-]
 
 //1. registrar una nueva mascota
 
@@ -183,7 +22,7 @@ function agregarMascota() {
     nuevaMascota.fechaNacimiento = fechaNacimiento
 
     //para calcular la edad de la mascota utilizo la funcion getFullYear
-    nuevaMascota.edad = (fechaActual - fechaNacimiento)/(1000*3600*24*360);
+    nuevaMascota.edad = (fechaActual - fechaNacimiento) / (1000 * 3600 * 24 * 360);
     nuevaMascota.peso = parseInt(prompt("Ingrese el peso de la mascota"))
     nuevaMascota.estado = prompt("Ingrese el estado de la mascota")
     nuevaMascota.dueño = {}
@@ -222,14 +61,14 @@ function verDueños() {
 //4. Buscar mascota por nombre
 
 // aca utilizo un for para recorrer el array mascotas y mostrar la informacion de una mascota
-function buscarMascota(){
+function buscarMascota() {
 
-//declaro la variable mascota para comparar la mascota ingresada con las mascotas del array
+    //declaro la variable mascota para comparar la mascota ingresada con las mascotas del array
     let mascota = prompt("ingresa el nombre de la mascota que deseas buscar:")
-    for (let i = 0; i < mascotas.length; i++) { 
+    for (let i = 0; i < mascotas.length; i++) {
         if (mascotas[i].nombre == mascota) { //si la mascota ingresada es igual al valor de nombre de la mascota del array, se muestra la informacion de la mascota
             console.info(mascotas[i])
-        }        
+        }
     }
 }
 
@@ -241,10 +80,10 @@ function mascotasMismoDueño() {
     //declaro la variable dueño para comparar el nombre del dueño ingresado con el nombre del dueño de las mascotas del array
     let dueño = prompt("ingresa el nombre del dueño de las mascotas que deseas ver:")
     for (let i = 0; i < mascotas.length; i++) {
-        if(mascotas[i].dueño.nombreDueño === dueño){ // si el nombre del dueño ingresado es igual al valor de nombre del dueño de la mascota del array, se muestra el nombre de la mascota
+        if (mascotas[i].dueño.nombreDueño === dueño) { // si el nombre del dueño ingresado es igual al valor de nombre del dueño de la mascota del array, se muestra el nombre de la mascota
             console.info(mascotas[i].nombre)
         }
-        
+
     }
 }
 
@@ -252,7 +91,7 @@ function mascotasMismoDueño() {
 //6. Actualizar informacion de mascota existente
 
 function actualizaInfo() {
-    
+
     // pido el nombre de la mascota a actualizar para buscarla en mi array
     let mascota = prompt("ingresa el nombre de la mascota que deseas actualizar:")
 
@@ -260,11 +99,11 @@ function actualizaInfo() {
     let mascotaEncontrada = false
 
     // recorro el array mascotas y si el nombre de la mascota ingresada es igual al nombre de la mascota del array, se actualiza la informacion de la mascota
-    for (let i = 0; i < mascotas.length; i++){
+    for (let i = 0; i < mascotas.length; i++) {
         if (mascotas[i].nombre === mascota) {
             mascotaEncontrada = true
 
-    // se le pide al usuario que ingrese la informacion que desea actualizar
+            // se le pide al usuario que ingrese la informacion que desea actualizar
             console.info(`Que infromacion deseas cambiar de la mascota? elije del 1 al 11:
             1. nombre
             2. especie
@@ -279,8 +118,8 @@ function actualizaInfo() {
             11. correo
             0. volver al menu principal`)
             let eleccion = prompt("Elije una opcion")
-        
-    // se le pide al usuario que ingrese la nueva informacion y se actualiza la informacion de la mascota en base a la elecion del usuario
+
+            // se le pide al usuario que ingrese la nueva informacion y se actualiza la informacion de la mascota en base a la elecion del usuario
             switch (eleccion) {
                 case "1":
                     mascotas[i].nombre = prompt("ingresa el nuevo nombre de la mascota:")
@@ -335,7 +174,7 @@ function actualizaInfo() {
                     break;
             }
         }
-    
+
     }
     // si no se encuentra la mascota se vuelve a llamar a la funcion para que ingrese nuevamente el nombre de la mascota correcta
     if (!mascotaEncontrada) {
@@ -352,11 +191,11 @@ function eliminarMascota() {
 
     // inicializo la variable mascotaEncontrada en falso, si mascotaEncontrada cambia a true es porque la mascota se encuentra en el array
     let mascotaEncontrada = false
-    for (let i = 0; i < mascotas.length; i++){
+    for (let i = 0; i < mascotas.length; i++) {
         if (mascotas[i].nombre == mascota) {
-            mascotaEncontrada = true 
+            mascotaEncontrada = true
 
-    // se crea una variable que almacena la confirmacion de si se desea eliminar la mascota para no eliminar por error
+            // se crea una variable que almacena la confirmacion de si se desea eliminar la mascota para no eliminar por error
             let confirmacion = confirm(`¿Está seguro que desea eliminar a ${mascota}?`)
             if (confirmacion) {
                 mascotas.splice(i, 1)  // con el splice le pasamos la posicion donde se encuentra la mascota y eliminamos 1 atributo
@@ -389,7 +228,7 @@ function menu() {
         7. Eliminar una mascota
         0. salir`)
         let opcion = Number(prompt("Ingrese una opcion"))
-    
+
         // se crea un switch que permite ejecutar las funciones segun la opcion que ingrese el usuario
         switch (opcion) {
             case 1:
@@ -417,15 +256,57 @@ function menu() {
                 console.info("Gracias por usar el sistema")
                 menu = false
                 break;
-    
+
             default:
                 console.info("Opcion no valida")
                 break;
         }
-    }  
+    }
 }
 
 // se ejecuta la funcion menu() para ejecutar todo el programa
-menu()
+//menu()
+
+const contenedorMascota = document.querySelector("#section1")
+console.info(contenedorMascota)
+
+for (let i = 0; i < mascotas.length; i++) {
+    contenedorMascota.innerHTML += `
+    <article class="card" style="width: 30rem;">
+        <h5 class="card-title text-center fw-bold fs-3 text-capitalize">${mascotas[i].nombre}</h5>    
+        <img src="${mascotas[i].imagen}" class="card-img-top h-50" alt="${mascotas[i].especie} ${mascotas[i].raza}">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Especie: ${mascotas[i].especie}</li>
+            <li class="list-group-item">Raza: ${mascotas[i].raza}</li>
+            <li class="list-group-item">Edad: ${mascotas[i].edad}</li>
+            <li class="list-group-item">Peso: ${mascotas[i].peso}</li>
+            <li class="list-group-item">Estado: ${mascotas[i].estado}</li>
+            <li class="list-group-item">Dueño: ${mascotas[i].dueño.nombreDueño}</li>
+        </ul>
+    </article>`      
+}
+
+
+
+
+// mascotas.forEach(mascota => {
+//     contenedorMascota.innerHTML +=`
+//         < img src = "..." class="card-img-top" alt = "${mascota.especie} ${mascota.raza}" >
+//       <article class="card-body">
+//         <h5 class="card-title">Card title</h5>
+//       </article>
+
+//       <ul class="list-group list-group-flush">
+//         <li class="list-group-item">Especie:</li>
+//         <li class="list-group-item">Raza:</li>
+//         <li class="list-group-item">Edad:</li>
+//         <li class="list-group-item">Peso:</li>
+//         <li class="list-group-item">Estado:</li>
+//         <li class="list-group-item">Dueño:</li>
+//     </ul>
+//       </article >
+//     </section > `
+    
+// });
 
 
