@@ -143,7 +143,7 @@ let mascotas = [
         fechaNacimiento: "2019-09-30",
         edad: 5,
         peso: 8,
-        estado: "estable",
+        estado: "critico",
         dueño: {
             nombreDueño: "david",
             documento: "6789012345",
@@ -155,17 +155,17 @@ let mascotas = [
     {
         nombre: "mia",
         especie: "gato",
-        raza: "abisinio",
-        imagen: "https://picartpetcare.com/wp-content/uploads/2021/01/gato-abisinio.jpg",
+        raza: "khao manee",
+        imagen: "https://t1.ea.ltmcdn.com/es/posts/7/7/4/cuidados_para_un_gato_blanco_22477_orig.jpg",
         fechaNacimiento: "2017-06-20",
         edad: 7,
         peso: 12,
-        estado: "critico",
+        estado: "estable",
         dueño: {
-            nombreDueño: "david",
+            nombreDueño: "valeria",
             documento: "6789012345",
             telefonoContacto: "555-789-0123",
-            correo: "david@example.com",
+            correo: "valeria@example.com",
         }
         
     }
