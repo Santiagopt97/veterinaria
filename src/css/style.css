@@ -5,15 +5,3 @@
 * {
     font-family: "Ubuntu", sans-serif;
 }
-
-/*Colores riwi*/
-
-:root { 
-    --primary: #6B5CFF;
-    --secondary: #181E4B;
-    --success: #5ACCA4;
-    --danger: #FE654F;
-    --warning: #E6CA52;
-    --light: #F9FAFC;
-    --info: #EAA2FC;
-}

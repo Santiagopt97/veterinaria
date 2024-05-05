@@ -41,7 +41,7 @@ let mascotas = [
         fechaNacimiento: "2017-08-25",
         edad: 7,
         peso: 20,
-        estado: "estable",
+        estado: "critico",
         dueño: {
             nombreDueño: "carlos",
             documento: "5678901234",
@@ -75,7 +75,7 @@ let mascotas = [
         fechaNacimiento: "2020-02-15",
         edad: 4,
         peso: 3,
-        estado: "estable",
+        estado: "critico",
         dueño: {
             nombreDueño: "ana",
             documento: "1234567890",
@@ -92,7 +92,7 @@ let mascotas = [
         fechaNacimiento: "2023-04-20",
         edad: 1,
         peso: 28,
-        estado: "estable",
+        estado: "critico",
         dueño: {
             nombreDueño: "david",
             documento: "6789012345",

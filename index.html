@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 
 <head>
   <meta charset="UTF-8">
@@ -24,26 +24,30 @@
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid fixed-top-0 w-100">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-          </ul>
+  <header id="header">
+    <nav class="navbar bg-secondary position-fixed top-0 z-3 w-100">
+      <div class="container-fluid">
+        <button onclick="cambiarTema()" class="btn rounded-fill"><i id="dl-icon" class="bi bi-moon-fill"></i></button>
+        <a class="navbar-brand text-light" href="#header">Veterinaria Riwi</a>
+          <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <form class="d-flex" role="search">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#main">Nuestras mascotas</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#section2">Nuestros clientes</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#main">a</a>
+              </li>
+            </ul>
+          </form>
         </div>
       </div>
     </nav>
@@ -51,26 +55,28 @@
 
   
   <main id="main">
-    <h1 class="text-center">Nuestras mascotas</h1>
+    <h1 class="text-center pt-5">Nuestras mascotas</h1>
     <section id="section1" class="d-flex w-100 flex-wrap justify-content-center gap-4">
 
     </section>
-    <!-- <section class="card contenedor-mascota d-flex w-25" > -->
-      <!-- <img src="..." class="card-img-top" alt="...">
-      <article class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </article>
 
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Especie:</li>
-        <li class="list-group-item">Raza:</li>
-        <li class="list-group-item">Edad:</li>
-        <li class="list-group-item">Peso:</li>
-        <li class="list-group-item">Estado:</li>
-        <li class="list-group-item">Dueño:</li>
-    </ul>
+    <h1 class="text-center">Nuestros clientes</h1>
+    <section id="section2" class="d-flex w-100 flex-wrap justify-content-center gap-4" >
+      
+    </section>
+
+    <section id="section3" class="d-flex flex-column align-items-center py-5 w-100 text-center">
+      <h2>Buscador de mascotas</h2>
+      <article class="d-flex justify-content-center w-25 pt-5">
+        <input id="nombre" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button id="buscar" class="btn btn-outline-success" type="submit">Search</button>
       </article>
-    </section> -->
+      
+      <article id="mascota-filtrada" class="card " style="width: 40rem;">
+
+      </article>
+    </section>
+
   </main>
 
   <footer>

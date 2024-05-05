@@ -267,46 +267,99 @@ function menu() {
 // se ejecuta la funcion menu() para ejecutar todo el programa
 //menu()
 
-const contenedorMascota = document.querySelector("#section1")
-console.info(contenedorMascota)
-
-for (let i = 0; i < mascotas.length; i++) {
-    contenedorMascota.innerHTML += `
-    <article class="card" style="width: 30rem;">
-        <h5 class="card-title text-center fw-bold fs-3 text-capitalize">${mascotas[i].nombre}</h5>    
-        <img src="${mascotas[i].imagen}" class="card-img-top h-50" alt="${mascotas[i].especie} ${mascotas[i].raza}">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Especie: ${mascotas[i].especie}</li>
-            <li class="list-group-item">Raza: ${mascotas[i].raza}</li>
-            <li class="list-group-item">Edad: ${mascotas[i].edad}</li>
-            <li class="list-group-item">Peso: ${mascotas[i].peso}</li>
-            <li class="list-group-item">Estado: ${mascotas[i].estado}</li>
-            <li class="list-group-item">Dueño: ${mascotas[i].dueño.nombreDueño}</li>
-        </ul>
-    </article>`      
+const temaOscuro = () => {
+    document.querySelector("body").setAttribute("data-bs-theme", "dark");
+    document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill");
+}
+const temaClaro = () => {
+    document.querySelector("body").setAttribute("data-bs-theme", "light");
+    document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
+}
+const cambiarTema = () => {
+    document.querySelector("body").getAttribute("data-bs-theme") === "light" ?
+        temaOscuro() : temaClaro();
 }
 
 
+const contenedorMascota = document.querySelector("#section1")
 
+for (let i = 0; i < mascotas.length; i++) {
+    if (mascotas[i].estado==="critico") {
+        contenedorMascota.innerHTML += `
+        <article class="card " style="width: 40rem;">
+            <h3 class="card-title text-center fw-bold fs-3 text-capitalize">${mascotas[i].nombre}</h3>    
+            <img src="${mascotas[i].imagen}" class="card-img-top h-50" alt="${mascotas[i].especie} ${mascotas[i].raza}">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Especie: ${mascotas[i].especie}</li>
+                <li class="list-group-item">Raza: ${mascotas[i].raza}</li>
+                <li class="list-group-item">Edad: ${mascotas[i].edad} años</li>
+                <li class="list-group-item">Peso: ${mascotas[i].peso} kilos</li>
+                <li class="list-group-item text-warning">Estado: ${mascotas[i].estado}</li>
+            </ul>
+        </article>`  
+    }else{
+        contenedorMascota.innerHTML += `
+        <article class="card " style="width: 40rem;">
+            <h3 class="card-title text-center fw-bold fs-3 text-capitalize">${mascotas[i].nombre}</h3>    
+            <img src="${mascotas[i].imagen}" class="card-img-top h-50" alt="${mascotas[i].especie} ${mascotas[i].raza}">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Especie: ${mascotas[i].especie}</li>
+                <li class="list-group-item">Raza: ${mascotas[i].raza}</li>
+                <li class="list-group-item">Edad: ${mascotas[i].edad} años</li>
+                <li class="list-group-item">Peso: ${mascotas[i].peso} kilos</li>
+                <li class="list-group-item text-success">Estado: ${mascotas[i].estado}</li>
+            </ul>
+        </article>`  
+    }
+       
+}
 
-// mascotas.forEach(mascota => {
-//     contenedorMascota.innerHTML +=`
-//         < img src = "..." class="card-img-top" alt = "${mascota.especie} ${mascota.raza}" >
-//       <article class="card-body">
-//         <h5 class="card-title">Card title</h5>
-//       </article>
+const contenedorClientes = document.querySelector("#section2")
 
-//       <ul class="list-group list-group-flush">
-//         <li class="list-group-item">Especie:</li>
-//         <li class="list-group-item">Raza:</li>
-//         <li class="list-group-item">Edad:</li>
-//         <li class="list-group-item">Peso:</li>
-//         <li class="list-group-item">Estado:</li>
-//         <li class="list-group-item">Dueño:</li>
-//     </ul>
-//       </article >
-//     </section > `
-    
-// });
+mascotas.forEach(dueño => {
 
+    contenedorClientes.innerHTML += `
+    <article class="card" style="width: 20rem;">
+        <div class="card-header text-capitalize fs-4 fw-bold ps-0">
+            Cliente: ${dueño.dueño.nombreDueño}
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item ps-4"><span class="fw-bold fs-5">Dueño de:</span> ${dueño.nombre}</li>
+            <li class="list-group-item ps-4"><span class="fw-bold fs-5">Documento:</span> ${dueño.dueño.documento}</li>
+            <li class="list-group-item ps-4"><span class="fw-bold fs-5">Contacto:</span> ${dueño.dueño.telefonoContacto}</li>
+            <li class="list-group-item ps-4"><span class="fw-bold fs-5">Correo:</span> ${dueño.dueño.correo}</li>
+        </ul>
+    </article>
+    `
+});
+
+const buscar = document.querySelector("#buscar");
+const mascotaFiltrada = document.querySelector("#mascota-filtrada");
+
+buscar.addEventListener("click", () => {
+    const nombre = document.querySelector("#nombre");
+    const contenido = nombre.value;
+    let mascotaB = false
+    mascotas.forEach((mascota, indice) => { // Añadimos el índice como segundo parámetro
+        if (mascota.nombre == contenido) {
+            mascotaB = true
+            mascotaFiltrada.innerHTML = `
+                <h2 class="text-center"> La mascota filtrada es: </h2>
+                <h3 class="card-title text-center fw-bold fs-3 text-capitalize">${mascotas[indice].nombre}</h3>    
+                <img src="${mascotas[indice].imagen}" class="card-img-top h-50" alt="${mascotas[indice].especie} ${mascotas[indice].raza}">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Especie: ${mascotas[indice].especie}</li>
+                    <li class="list-group-item">Raza: ${mascotas[indice].raza}</li>
+                    <li class="list-group-item">Edad: ${mascotas[indice].edad} años</li>
+                    <li class="list-group-item">Peso: ${mascotas[indice].peso} kilos</li>
+                    <li class="list-group-item text-success">Estado: ${mascotas[indice].estado}</li>
+                </ul>
+            `;
+        }
+    });
+    if (mascotaB == false){
+        alert("La mascota que estas buscando no existe")
+    }
+
+});
 
